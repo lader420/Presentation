@@ -49,42 +49,42 @@
             <h2 id="services-heading" class="text-3xl sm:text-4xl font-bold text-center mb-10">Nuestros Servicios</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Tarjeta de servicio 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300">
+                <div class="service-card cursor-pointer bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300" data-service-id="cleaning-assembly">
                     <h3 id="service-1-title" class="text-xl font-bold mb-3">Limpieza y Ensamble</h3>
                     <p id="service-1-desc" class="text-gray-600">
                         Limpieza profunda de componentes, ensamble de equipos y cambio de hardware. Mantén tu equipo como nuevo.
                     </p>
                 </div>
                 <!-- Tarjeta de servicio 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300">
+                <div class="service-card cursor-pointer bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300" data-service-id="software-install">
                     <h3 id="service-2-title" class="text-xl font-bold mb-3">Instalación de Software</h3>
                     <p id="service-2-desc" class="text-gray-600">
                         Instalación de sistemas operativos (Windows 7, 8, 10, 11), paquetería de Office 365 y software especializado.
                     </p>
                 </div>
                 <!-- Tarjeta de servicio 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300">
+                <div class="service-card cursor-pointer bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300" data-service-id="activation-updates">
                     <h3 id="service-3-title" class="text-xl font-bold mb-3">Activación y Actualizaciones</h3>
                     <p id="service-3-desc" class="text-gray-600">
                         Activación de Windows con garantía de futuras actualizaciones para un rendimiento óptimo.
                     </p>
                 </div>
                 <!-- Tarjeta de servicio 4 -->
-                <div class="bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300">
+                <div class="service-card cursor-pointer bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300" data-service-id="equipment-types">
                     <h3 id="service-4-title" class="text-xl font-bold mb-3">Equipos Casuales, Gamers y Mixtos</h3>
                     <p id="service-4-desc" class="text-gray-600">
-                        Manejo de todo tipo de equipos, desde los casuales hasta los de alto rendimiento para gaming.
+                        Manejo de todo tipo de equipos, desde los casuales hasta los de alto rendimiento para gaming. No importa el tipo de equipo, puedo ayudar.
                     </p>
                 </div>
                 <!-- Tarjeta de servicio 5 -->
-                <div class="bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300">
+                <div class="service-card cursor-pointer bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300" data-service-id="technical-support">
                     <h3 id="service-5-title" class="text-xl font-bold mb-3">Soporte Técnico</h3>
                     <p id="service-5-desc" class="text-gray-600">
                         Diagnóstico y solución de problemas de hardware y software para un funcionamiento sin interrupciones.
                     </p>
                 </div>
                 <!-- Tarjeta de servicio 6 -->
-                <div class="bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300">
+                <div class="service-card cursor-pointer bg-gray-50 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-500 transition duration-300" data-service-id="personalized-advice">
                     <h3 id="service-6-title" class="text-xl font-bold mb-3">Asesoría Personalizada</h3>
                     <p id="service-6-desc" class="text-gray-600">
                         Te ayudo a elegir el hardware correcto para tu equipo o a resolver cualquier duda técnica.
@@ -121,6 +121,20 @@
         </div>
     </footer>
     
+    <!-- Panel Modal de Servicios -->
+    <div id="service-modal" class="fixed inset-0 bg-gray-900 bg-opacity-80 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-xl w-full mx-auto relative shadow-2xl">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition duration-200">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <img id="modal-image" class="w-full h-auto rounded-2xl mb-6 shadow-md" src="" alt="Imagen del Servicio">
+            <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold text-center mb-4 text-blue-800"></h3>
+            <p id="modal-desc" class="text-gray-700 text-base sm:text-lg text-center leading-relaxed"></p>
+        </div>
+    </div>
+
     <script>
         const translations = {
             'es': {
@@ -137,7 +151,7 @@
                 'service-3-title': 'Activación y Actualizaciones',
                 'service-3-desc': 'Activación de Windows con garantía de futuras actualizaciones para un rendimiento óptimo.',
                 'service-4-title': 'Equipos Casuales, Gamers y Mixtos',
-                'service-4-desc': 'Manejo de todo tipo de equipos, desde los casuales hasta los de alto rendimiento para gaming.',
+                'service-4-desc': 'Manejo de todo tipo de equipos, desde los casuales hasta los de alto rendimiento para gaming. No importa el tipo de equipo, puedo ayudar.',
                 'service-5-title': 'Soporte Técnico',
                 'service-5-desc': 'Diagnóstico y solución de problemas de hardware y software para un funcionamiento sin interrupciones.',
                 'service-6-title': 'Asesoría Personalizada',
@@ -163,7 +177,7 @@
                 'service-3-title': 'Activation and Updates',
                 'service-3-desc': 'Windows activation with guaranteed future updates for optimal performance.',
                 'service-4-title': 'Casual, Gaming, and Mixed Computers',
-                'service-4-desc': 'Handling all types of computers, from casual to high-performance gaming rigs.',
+                'service-4-desc': 'Handling all types of computers, from casual to high-performance gaming rigs. No matter the type of computer, I can help.',
                 'service-5-title': 'Technical Support',
                 'service-5-desc': 'Diagnosis and solution of hardware and software problems for uninterrupted operation.',
                 'service-6-title': 'Personalized Advice',
@@ -177,19 +191,96 @@
             }
         };
 
+       const serviceDetails = {
+    'cleaning-assembly': {
+        'es': {
+            title: 'Limpieza Profunda y Ensamble',
+            image: './Limpieza Profunda y Ensamble.jpg',
+            description: 'Realizo una limpieza interna y externa completa de tu equipo para eliminar polvo y suciedad, mejorando el flujo de aire y previniendo el sobrecalentamiento. También me encargo del ensamble de equipos nuevos y el reemplazo de componentes.'
+        },
+        'en': {
+            title: 'Deep Cleaning and Assembly',
+            image: './Limpieza Profunda y Ensamble.jpg',
+            description: 'I perform a complete internal and external cleaning of your computer to remove dust and dirt, improving airflow and preventing overheating. I also handle the assembly of new computers and the replacement of components.'
+        }
+    },
+    'software-install': {
+        'es': {
+            title: 'Instalación de Software y Sistemas',
+            image: './Instalación de Software y Sistemas.jpg',
+            description: 'Instalo sistemas operativos (Windows 7, 8, 10 y 11), así como la suite de Microsoft Office 365, asegurando que todo funcione perfectamente. Además, instalo software especializado que necesites para tu trabajo o estudios.'
+        },
+        'en': {
+            title: 'Software and System Installation',
+            image: './Instalación de Software y Sistemas.jpg',
+            description: 'I install operating systems (Windows 7, 8, 10, and 11), as well as the Microsoft Office 365 suite, ensuring everything works perfectly. I also install any specialized software you may need for your work or studies.'
+        }
+    },
+    'activation-updates': {
+        'es': {
+            title: 'Activación y Mantenimiento de Windows',
+            image: './Activación y Mantenimiento de Windows.jpg',
+            description: 'Activo tu sistema operativo Windows de forma segura y permanente, lo que te permite recibir todas las actualizaciones de seguridad y de funciones futuras sin problema, manteniendo tu equipo protegido y al día.'
+        },
+        'en': {
+            title: 'Windows Activation and Maintenance',
+            image: './Activación y Mantenimiento de Windows.jpg',
+            description: 'I securely and permanently activate your Windows operating system, allowing you to receive all future security and feature updates without any issues, keeping your computer protected and up-to-date.'
+        }
+    },
+    'equipment-types': {
+        'es': {
+            title: 'Mantenimiento para Todo Tipo de Equipos',
+            image: './Mantenimiento para Todo Tipo de Equipos.jpeg',
+            description: 'Mi servicio cubre una amplia gama de equipos, desde computadoras de uso diario para oficina o el hogar, hasta potentes equipos gamers y estaciones de trabajo. No importa el tipo de equipo, puedo ayudar.'
+        },
+        'en': {
+            title: 'Maintenance for All Types of Computers',
+            image: './Mantenimiento para Todo Tipo de Equipos.jpeg',
+            description: 'My service covers a wide range of computers, from everyday office or home desktops to powerful gaming rigs and workstations. No matter the type of computer, I can help.'
+        }
+    },
+    'technical-support': {
+        'es': {
+            title: 'Soporte Técnico Especializado',
+            image: './Soporte Técnico Especializado.png',
+            description: 'Diagnóstico y resolución de problemas complejos. Ya sean fallas de hardware, errores de software, virus o cualquier otro problema técnico, estoy aquí para encontrar la solución y hacer que tu equipo funcione como debe.'
+        },
+        'en': {
+            title: 'Specialized Technical Support',
+            image: './Soporte Técnico Especializado.png',
+            description: 'Diagnosis and resolution of complex problems. Whether it\'s hardware failures, software errors, viruses, or any other technical issue, I am here to find the solution and get your computer working as it should.'
+        }
+    },
+    'personalized-advice': {
+        'es': {
+            title: 'Asesoría y Recomendaciones',
+            image: './Asesoría y Recomendaciones.png',
+            description: 'Si no estás seguro de qué componentes comprar para mejorar tu PC o necesitas ayuda para armar un nuevo equipo, te ofrezco asesoría personalizada. Te ayudo a tomar la mejor decisión basada en tus necesidades y presupuesto.'
+        },
+        'en': {
+            title: 'Personalized Advice and Recommendations',
+            image: './Asesoría y Recomendaciones.png',
+            description: 'If you are unsure about which components to buy to upgrade your PC or need help building a new one, I offer personalized advice. I will help you make the best decision based on your needs and budget.'
+        }
+    }
+};
+
         let currentLang = 'es';
         const langToggleBtn = document.getElementById('lang-toggle');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const modal = document.getElementById('service-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalTitle = document.getElementById('modal-title');
+        const modalImage = document.getElementById('modal-image');
+        const modalDesc = document.getElementById('modal-desc');
 
         function updateContent(lang) {
             const elementsToTranslate = Object.keys(translations[lang]);
             elementsToTranslate.forEach(id => {
                 const element = document.getElementById(id);
                 if (element) {
-                    if (id === 'lang-toggle-text') {
-                        langToggleBtn.textContent = translations[lang][id];
-                    } else {
-                        element.textContent = translations[lang][id];
-                    }
+                    element.textContent = translations[lang][id];
                 }
             });
             document.documentElement.lang = lang;
@@ -199,6 +290,27 @@
         langToggleBtn.addEventListener('click', () => {
             currentLang = currentLang === 'es' ? 'en' : 'es';
             updateContent(currentLang);
+        });
+
+        serviceCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const serviceId = card.dataset.serviceId;
+                const content = serviceDetails[serviceId][currentLang];
+                modalTitle.textContent = content.title;
+                modalImage.src = content.image;
+                modalDesc.textContent = content.description;
+                modal.classList.remove('hidden');
+            });
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
         });
 
         // Set initial content on page load
